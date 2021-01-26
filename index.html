@@ -71,8 +71,8 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
     $(document).ready(function() {
-        localStorage.setItem('count', 0)
         let once = true;
+
         $(".snap-wrapper").scroll(function(){
 
             const top_of_element = $(".section-3").offset().top;
@@ -80,21 +80,19 @@
             const bottom_of_screen = $(window).scrollTop() + $(window).innerHeight();
             const top_of_screen = $(window).scrollTop();
 
-            console.log(bottom_of_screen, top_of_element)
-            console.log(top_of_screen, bottom_of_element)
-
             if ((bottom_of_screen > top_of_element) && (top_of_screen < bottom_of_element)) {
+                console.log('okeoke', once)
                 const bodyElm = $(".snap-wrapper").html();
                 const insertElm = bodyElm.replace('<div id="bottomLimit"></div>', '');
 
                 if (once) {
+                    $("section").removeClass("section-3");
                     $(insertElm).insertBefore("#bottomLimit");
                     once = false;
                     return;
                 }
             } else {
                 if (!once) once = true;
-                return;
             }
         });
     });
