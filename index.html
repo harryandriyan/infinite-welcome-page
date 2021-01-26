@@ -80,16 +80,21 @@
             const bottom_of_screen = $(window).scrollTop() + $(window).innerHeight();
             const top_of_screen = $(window).scrollTop();
 
+            console.log(bottom_of_screen, top_of_element)
+            console.log(top_of_screen, bottom_of_element)
+
             if ((bottom_of_screen > top_of_element) && (top_of_screen < bottom_of_element)) {
                 const bodyElm = $(".snap-wrapper").html();
                 const insertElm = bodyElm.replace('<div id="bottomLimit"></div>', '');
 
                 if (once) {
                     $(insertElm).insertBefore("#bottomLimit");
-                    once = true;
+                    once = false;
+                    return;
                 }
-
-                once = false;
+            } else {
+                if (!once) once = true;
+                return;
             }
         });
     });
