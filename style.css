@@ -71,8 +71,14 @@ header .overlay {
     background-color: #000000;
 }
 
-.gif-image {
+.gif-container {
     height: 100vh;
+    /* padding-top: 15%; */
+}
+
+.gif-image {
+    /* height: 100vh; */
+    width: 50vw;
 }
 
 .floating-media {
